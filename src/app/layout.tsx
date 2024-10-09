@@ -1,20 +1,19 @@
-import type { Metadata } from "next";
+'use client'
 import "./globals.css";
-
-export const metadata: Metadata = {
-  title: "Redux-test",
-};
+import { storeRedux } from "@/redux/store";
+import { Provider } from "react-redux";
 
 export default function RootLayout({
-  children,
+    children,
 }: Readonly<{
-  children: React.ReactNode;
+    children: React.ReactNode;
 }>) {
-  return (
-    <html lang="en">
-      <body>
-        {children}
-      </body>
-    </html>
-  );
+
+    return (
+        <html lang="en">
+            <body>
+                <Provider store={storeRedux}> {children}</Provider>
+            </body>
+        </html>
+    );
 }
